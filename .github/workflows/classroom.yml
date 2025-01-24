@@ -39,33 +39,91 @@ jobs:
         command: mvn exec:java -Dexec.mainClass="com.lab.App" --quiet -f ${{ env.PROJECT_DIR }}/pom.xml
         input: ''
         expected-output: |-
-          Hello, world!
+          PetrolCar color: Red
+          PetrolCar remaining mileage: 750.0
+          PetrolCar ran: 100.0 km
+          DieselCar color: Blue
+          DieselCar remaining mileage: 1200.0
+          DieselCar ran: 150.0 km
+          EvCar color: Green
+          EvCar remaining mileage: 480.0
+          EvCar ran: 480.0 km
         comparison-method: exact
         timeout: 10
-        max-score: 20
-    - name: Unit test 1
+        max-score: 14
+    - name: all_engines_can_be_instantiated
       id: unit-test-1
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Unit test 1
+        test-name: all_engines_can_be_instantiated
         setup-command: ''
-        command: "./gradle-tests/gradlew test --tests org.test.ClassTest.testOutput -p gradle-tests"
+        command: "./gradle-tests/gradlew test --tests org.test.ClassTest.all_engines_can_be_instantiated -p gradle-tests"
         timeout: 10
-        max-score: 40
-    - name: Unit test 2
+        max-score: 14
+    - name: newly_created_engines_have_no_mileage
       id: unit-test-2
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Unit test 2
+        test-name: newly_created_engines_have_no_mileage
         setup-command: ''
-        command: "./gradle-tests/gradlew test --tests org.test.ClassTest.testEquality -p gradle-tests"
+        command: "./gradle-tests/gradlew test --tests org.test.ClassTest.newly_created_engines_have_no_mileage -p gradle-tests"
         timeout: 10
-        max-score: 40
+        max-score: 12
+    - name: cars_cannot_run_farther_than_its_remaining_mileage
+      id: unit-test-3
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: cars_cannot_run_farther_than_its_remaining_mileage
+        setup-command: ''
+        command: "./gradle-tests/gradlew test --tests org.test.ClassTest.cars_cannot_run_farther_than_its_remaining_mileage -p gradle-tests"
+        timeout: 10
+        max-score: 12
+    - name: efficiency_and_mileage_calculations_agree
+      id: unit-test-4
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: efficiency_and_mileage_calculations_agree
+        setup-command: ''
+        command: "./gradle-tests/gradlew test --tests org.test.ClassTest.efficiency_and_mileage_calculations_agree -p gradle-tests"
+        timeout: 10
+        max-score: 12
+    - name: running_twice_reduces_energy_accordingly
+      id: unit-test-5
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: running_twice_reduces_energy_accordingly
+        setup-command: ''
+        command: "./gradle-tests/gradlew test --tests org.test.ClassTest.running_twice_reduces_energy_accordingly -p gradle-tests"
+        timeout: 10
+        max-score: 12
+    - name: color_is_stored_and_engine_methods_are_correctly_delegated
+      id: unit-test-6
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: color_is_stored_and_engine_methods_are_correctly_delegated
+        setup-command: ''
+        command: "./gradle-tests/gradlew test --tests org.test.ClassTest.color_is_stored_and_engine_methods_are_correctly_delegated -p gradle-tests"
+        timeout: 10
+        max-score: 12
+    - name: cars_cannot_run_before_refill
+      id: unit-test-7
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: cars_cannot_run_before_refill
+        setup-command: ''
+        command: "./gradle-tests/gradlew test --tests org.test.ClassTest.cars_cannot_run_before_refill -p gradle-tests"
+        timeout: 10
+        max-score: 12
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         CONSOLE-OUTPUT_RESULTS: "${{ steps.console-output.outputs.result }}"
         UNIT-TEST-1_RESULTS: "${{ steps.unit-test-1.outputs.result }}"
         UNIT-TEST-2_RESULTS: "${{ steps.unit-test-2.outputs.result }}"
+        UNIT-TEST-3_RESULTS: "${{ steps.unit-test-3.outputs.result }}"
+        UNIT-TEST-4_RESULTS: "${{ steps.unit-test-4.outputs.result }}"
+        UNIT-TEST-5_RESULTS: "${{ steps.unit-test-5.outputs.result }}"
+        UNIT-TEST-6_RESULTS: "${{ steps.unit-test-6.outputs.result }}"
+        UNIT-TEST-7_RESULTS: "${{ steps.unit-test-7.outputs.result }}"
       with:
-        runners: console-output,unit-test-1,unit-test-2
+        runners: console-output,unit-test-1,unit-test-2,unit-test-3,unit-test-4,unit-test-5,unit-test-6,unit-test-7
