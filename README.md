@@ -71,15 +71,3 @@ EvCar color: Green
 EvCar remaining mileage: 480.0
 EvCar ran: 480.0 km
 ```
-
-## Additional Notes
-
-**Hints:**
-
-- Consider using instance variables in the `Engine` implementations to track the current energy level.
-- When designing the `run()` method, account for edge cases like attempting to drive farther than the remaining mileage.
-
-**Common Pitfalls:**
-
-- Avoid coupling the `Car` class to specific engine types. Use the `Engine` interface for flexibility.
-- Ensure that all energy-related operations are encapsulated within the engine classes, keeping the `Car` class focused on vehicle-related functionality.
