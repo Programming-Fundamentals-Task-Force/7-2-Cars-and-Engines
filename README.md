@@ -1,4 +1,4 @@
-# Assignment 7-1: Cars and Engines
+# Assignment 7-2: Cars and Engines
 
 Name:
 
@@ -21,7 +21,7 @@ The focus of this assignment is to understand and apply the principles of compos
 
 - **WARNING:** Do not modify the `.github` or `gradle-tests` directories. These directories are essential for the automated grading process, and any changes may result in incorrect grading.
 
-The Maven project has already been created for you. The package name is `com.lab`, and the project name (and directory) is `lab71`. Use `mvn compile` to build the project and `java -cp target/classes com.lab.App` or `mvn exec:java "-Dexec.mainClass=com.lab.App"` to run it.
+The Maven project has already been created for you. The package name is `com.lab`, and the project name (and directory) is `lab72`. Use `mvn compile` to build the project and `java -cp target/classes com.lab.App` or `mvn exec:java "-Dexec.mainClass=com.lab.App"` to run it.
 
 ## Requirements and Specifications
 
